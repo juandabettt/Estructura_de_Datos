@@ -21,11 +21,11 @@ class ListaEnlazadaTareas:
     def agregar_tarea(self, tarea):
         nuevo_nodo = NodoTarea(tarea)
         
-        # Si la lista está vacía, agregamos el nodo como cabeza
+        
         if not self.cabeza:
             self.cabeza = nuevo_nodo
         else:
-            # Insertar en la posición correcta según la prioridad y fecha de vencimiento
+            
             actual = self.cabeza
             anterior = None
 
@@ -34,10 +34,10 @@ class ListaEnlazadaTareas:
                 anterior = actual
                 actual = actual.siguiente
             
-            if anterior is None:  # Insertar al principio
+            if anterior is None:  
                 nuevo_nodo.siguiente = self.cabeza
                 self.cabeza = nuevo_nodo
-            else:  # Insertar en el medio o al final
+            else:  
                 nuevo_nodo.siguiente = actual
                 anterior.siguiente = nuevo_nodo
 
@@ -70,7 +70,7 @@ class ListaEnlazadaTareas:
         anterior = None
         index = 0
 
-        # Eliminar por descripción
+        
         if descripcion:
             while actual and actual.tarea.descripcion != descripcion:
                 anterior = actual
@@ -79,7 +79,7 @@ class ListaEnlazadaTareas:
                 print(f"No se encontró la tarea con la descripción '{descripcion}'.")
                 return
 
-        # Eliminar por posición
+        
         elif posicion is not None:
             while actual and index != posicion:
                 anterior = actual
@@ -89,8 +89,8 @@ class ListaEnlazadaTareas:
                 print(f"No se encontró la tarea en la posición {posicion}.")
                 return
         
-        # Eliminar el nodo
-        if anterior is None:  # Si es la cabeza
+        
+        if anterior is None:  
             self.cabeza = actual.siguiente
         else:
             anterior.siguiente = actual.siguiente
